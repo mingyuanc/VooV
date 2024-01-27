@@ -20,7 +20,7 @@ export default function Login() {
         className="w-[200px] mb-1"
         onClick={() => {
           router.push("explore");
-          ToastBuilder.success("Successfully signed up").send();
+          ToastBuilder.success("Successfully logged in").send();
         }}
       >
         Login
@@ -30,7 +30,7 @@ export default function Login() {
         className="w-[200px] mb-1"
         onClick={() => {
           router.push("explore");
-          ToastBuilder.success("Successfully registered").send();
+          ToastBuilder.success("Successfully signed up").send();
         }}
       >
         Sign up

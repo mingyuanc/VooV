@@ -1,13 +1,15 @@
 // src/components/Map.tsx
-import { MapContainer, Marker, Popup, TileLayer, Tooltip } from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import { townData } from "../data/town";
 import { cityData } from "../data/city";
+import { Map } from "leaflet";
 import L from "leaflet";
 
 import { Button } from "@/components/ui/button";
+import { useRef, useState } from "react";
 
 const greenIcon = new L.Icon({
   iconUrl:
@@ -25,12 +27,15 @@ interface mapProps {
   setEnding: (x: string) => void;
 }
 export default function MyMap({ setStarting, setEnding }: mapProps) {
+  const mapRef = useRef(null);
   const position: [number, number] = [1.3521, 103.8198];
+
   const zoom = 13;
 
   return (
     <div className="relative min-h-screen min-w-full z-0">
       <MapContainer
+        ref={mapRef}
         zoomControl={false}
         center={position}
         zoom={zoom}
@@ -47,7 +52,10 @@ export default function MyMap({ setStarting, setEnding }: mapProps) {
               <Button
                 variant="outline"
                 className="w-full border-none hover:bg-white"
-                onClick={() => setStarting(town.name)}
+                onClick={() => {
+                  (mapRef.current! as Map).closePopup();
+                  setStarting(town.name);
+                }}
               >{`Set ${town.name} as Pickup Point?`}</Button>
             </Popup>
           </Marker>
@@ -63,7 +71,10 @@ export default function MyMap({ setStarting, setEnding }: mapProps) {
               <Button
                 variant="outline"
                 className="w-full border-none hover:bg-white"
-                onClick={() => setEnding(town.name)}
+                onClick={() => {
+                  (mapRef.current! as Map).closePopup();
+                  setEnding(town.name);
+                }}
               >{`Set ${town.name} as Destination?`}</Button>
             </Popup>
           </Marker>

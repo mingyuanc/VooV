@@ -31,7 +31,7 @@ export default function Results() {
         </span>{" "}
         to <span className="text-primary"> {searchParams.get("ending")}</span>
       </h3>
-      {Array.from({ length: 4 }).map((x) => (
+      {Array.from({ length: 5 }).map((x) => (
         <BusCard
           key={Math.random()}
           bookFunction={book}
