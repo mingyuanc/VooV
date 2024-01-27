@@ -1,0 +1,51 @@
+export const cityData = [
+  {
+    id: 1,
+    name: "City Hall",
+    region: "Central",
+    population: -1,
+    location: [1.2907, 103.8517],
+  },
+  {
+    id: 2,
+    name: "Raffles Place",
+    region: "Central",
+    population: -1,
+    location: [1.283931, 103.851461],
+  },
+  {
+    id: 3,
+    name: "Bugis",
+    region: "Central",
+    population: -1,
+    location: [1.3007, 103.855],
+  },
+  {
+    id: 4,
+    name: "Marina Bay",
+    region: "Central",
+    population: -1,
+    location: [1.2838, 103.8591],
+  },
+  {
+    id: 5,
+    name: "Orchard",
+    region: "Central",
+    population: -1,
+    location: [1.3048, 103.8318],
+  },
+  {
+    id: 6,
+    name: "Promenade",
+    region: "Central",
+    population: -1,
+    location: [1.2899, 103.8648],
+  },
+  {
+    id: 7,
+    name: "Dhoby Ghaut",
+    region: "Central",
+    population: -1,
+    location: [1.2989, 103.8455],
+  },
+];
