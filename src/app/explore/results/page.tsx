@@ -1,14 +1,6 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import ToastBuilder from "@/components/notifications/ToastBuilder";
 import BusCard from "./BusCard";

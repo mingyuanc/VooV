@@ -19,7 +19,7 @@ export default function SearchBar({
           <ArrowDownIcon className="w-6 h-6 bg-white rounded-full p-1 m-2" />
           <input
             disabled
-            className="bg-transparent placeholder-black outline-none  pl-2 w-18 md:w-40"
+            className="bg-transparent placeholder-black outline-none  pl-2 w-[160px] md:w-40"
             placeholder="Starting Location"
             value={starting}
           />
@@ -30,7 +30,7 @@ export default function SearchBar({
           <MapPinIcon className="w-6 h-6 bg-white rounded-full p-1 m-2" />
           <input
             disabled
-            className="bg-transparent placeholder-black outline-none  pl-2 w-18 md:w-40 "
+            className="bg-transparent placeholder-black outline-none  pl-2 w-[160px] md:w-40 "
             placeholder="Ending Location"
             value={ending}
           />
