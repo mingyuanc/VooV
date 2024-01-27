@@ -53,7 +53,7 @@ export default function BusCard({ bookFunction, starting, ending }: cardProps) {
         <CardTitle>{`${starting} to ${ending}`}</CardTitle>
         <CardDescription>Bus Number: {busNumber} </CardDescription>
       </CardHeader>
-      <CardContent className="flex flex-col items-start md:items-end md:flex-row">
+      <CardContent className="flex flex-col items-center md:items-end md:flex-row">
         <div className="flex flex-col ">
           <div>
             {" "}
