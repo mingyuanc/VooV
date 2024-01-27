@@ -24,9 +24,8 @@ interface mapProps {
   setStarting: (x: string) => void;
   setEnding: (x: string) => void;
 }
-
 export default function MyMap({ setStarting, setEnding }: mapProps) {
-  const position = [1.3521, 103.8198];
+  const position: [number, number] = [1.3521, 103.8198];
   const zoom = 13;
 
   return (
@@ -36,7 +35,6 @@ export default function MyMap({ setStarting, setEnding }: mapProps) {
         center={position}
         zoom={zoom}
         scrollWheelZoom={true}
-        con
         className="min-h-screen  min-w-full absolute"
       >
         <TileLayer
@@ -44,7 +42,7 @@ export default function MyMap({ setStarting, setEnding }: mapProps) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {townData.map((town) => (
-          <Marker position={town.location} key={town.name}>
+          <Marker position={town.location as [number, number]} key={town.name}>
             <Popup>
               <Button
                 variant="outline"
@@ -56,7 +54,11 @@ export default function MyMap({ setStarting, setEnding }: mapProps) {
         ))}
 
         {cityData.map((town) => (
-          <Marker position={town.location} key={town.name} icon={greenIcon}>
+          <Marker
+            position={town.location as [number, number]}
+            key={town.name}
+            icon={greenIcon}
+          >
             <Popup>
               <Button
                 variant="outline"
