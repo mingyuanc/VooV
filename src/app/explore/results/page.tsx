@@ -22,7 +22,7 @@ export default function Results() {
   };
   return (
     <div className="flex flex-col items-center bg-secondary min-h-screen">
-      <h1 className="text-3xl font-bold my-4">Results </h1>
+      <h1 className="text-3xl font-bold mt-14 my-4">Results </h1>
       <h3 className="text-xl font-bold my-4 mx-2 text-center">
         Busses heading from
         <span className="text-blue-500">
