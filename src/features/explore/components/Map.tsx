@@ -23,14 +23,32 @@ const greenIcon = new L.Icon({
 });
 
 interface mapProps {
-  setStarting: (x: string) => void;
-  setEnding: (x: string) => void;
+  setPin: (x: string) => void;
+  isSelectingStart: boolean;
+  starting: string;
+  ending: string;
 }
-export default function MyMap({ setStarting, setEnding }: mapProps) {
+export default function MyMap({
+  setPin,
+  isSelectingStart,
+  starting,
+  ending,
+}: mapProps) {
   const mapRef = useRef(null);
   const position: [number, number] = [1.3521, 103.8198];
 
   const zoom = 13;
+
+  const townD =
+    townData.find((x) => starting === x.name) ||
+    townData.find((x) => ending === x.name)
+      ? []
+      : townData;
+  const cityD =
+    cityData.find((x) => starting === x.name) ||
+    cityData.find((x) => ending === x.name)
+      ? []
+      : cityData;
 
   return (
     <div className="relative min-h-screen min-w-full z-0">
@@ -46,7 +64,7 @@ export default function MyMap({ setStarting, setEnding }: mapProps) {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {townData.map((town) => (
+        {townD.map((town) => (
           <Marker position={town.location as [number, number]} key={town.name}>
             <Popup>
               <Button
@@ -54,14 +72,18 @@ export default function MyMap({ setStarting, setEnding }: mapProps) {
                 className="w-full border-none hover:bg-white"
                 onClick={() => {
                   (mapRef.current! as Map).closePopup();
-                  setStarting(town.name);
+                  setPin(town.name);
                 }}
-              >{`Set ${town.name} as Pickup Point?`}</Button>
+              >
+                {isSelectingStart
+                  ? `Set ${town.name} as Pickup Point?`
+                  : `Set ${town.name} as Destination?`}
+              </Button>
             </Popup>
           </Marker>
         ))}
 
-        {cityData.map((town) => (
+        {cityD.map((town) => (
           <Marker
             position={town.location as [number, number]}
             key={town.name}
@@ -73,9 +95,13 @@ export default function MyMap({ setStarting, setEnding }: mapProps) {
                 className="w-full border-none hover:bg-white"
                 onClick={() => {
                   (mapRef.current! as Map).closePopup();
-                  setEnding(town.name);
+                  setPin(town.name);
                 }}
-              >{`Set ${town.name} as Destination?`}</Button>
+              >
+                {isSelectingStart
+                  ? `Set ${town.name} as Pickup Point?`
+                  : `Set ${town.name} as Destination?`}
+              </Button>
             </Popup>
           </Marker>
         ))}

@@ -139,4 +139,18 @@ export const townData = [
     population: 96730,
     location: [1.3013, 103.7981],
   },
+  {
+    id: 20,
+    name: "Clementi",
+    region: "West",
+    population: 96730,
+    location: [1.3162, 103.7649],
+  },
+  {
+    id: 20,
+    name: "Jurong East",
+    region: "West",
+    population: 96730,
+    location: [1.3329, 103.7436],
+  },
 ];

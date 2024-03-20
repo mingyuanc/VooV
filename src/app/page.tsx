@@ -22,7 +22,7 @@ export default function Home() {
   }, [router]);
 
   return (
-    <div className="bg-foreground min-h-screen flex flex-col items-center justify-center overflow-hidden">
+    <div className="bg-foreground h-screen flex flex-col items-center justify-center overflow-hidden">
       <AnimatePresence>
         {shouldExit ? (
           <motion.img

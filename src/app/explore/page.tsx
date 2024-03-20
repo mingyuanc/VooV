@@ -7,8 +7,17 @@ import { useMemo, useState } from "react";
 
 export default function Explore() {
   const router = useRouter();
+  const [isSelectingStart, setIsSelectingStart] = useState(true);
   const [starting, setStarting] = useState("");
   const [ending, setEnding] = useState("");
+
+  const toggleStart = (x: boolean) => {
+    x ? setIsSelectingStart(true) : setIsSelectingStart(false);
+    x
+      ? ToastBuilder.success("Selecting starting point").send()
+      : ToastBuilder.success("Selecting ending point").send();
+  };
+
   const searchFunction = (starting: string, ending: string) => {
     if (starting === "") {
       ToastBuilder.error("Please select a starting point").send();
@@ -51,13 +60,18 @@ export default function Explore() {
   return (
     <div className="min-h-screen min-w-[100vw] overflow-hidden flex items-center justify-center">
       <Map
-        setStarting={(x) => setStarting(x)}
-        setEnding={(x) => setEnding(x)}
+        setPin={isSelectingStart ? setStarting : setEnding}
+        starting={starting}
+        ending={ending}
+        isSelectingStart={isSelectingStart}
       />
       <div className="absolute top-6 z-100000 ">
         <SearchBar
           starting={starting}
           ending={ending}
+          setStarting={setStarting}
+          setEnding={setEnding}
+          setIsSelectingStart={toggleStart}
           searchFunction={() => searchFunction(starting, ending)}
         />
       </div>
