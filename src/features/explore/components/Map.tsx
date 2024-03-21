@@ -9,7 +9,7 @@ import { Map } from "leaflet";
 import L from "leaflet";
 
 import { Button } from "@/components/ui/button";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 const greenIcon = new L.Icon({
   iconUrl:
@@ -27,12 +27,14 @@ interface mapProps {
   isSelectingStart: boolean;
   starting: string;
   ending: string;
+  toggleStart: (x: boolean) => void;
 }
 export default function MyMap({
   setPin,
   isSelectingStart,
   starting,
   ending,
+  toggleStart,
 }: mapProps) {
   const mapRef = useRef(null);
   const position: [number, number] = [1.3521, 103.8198];
@@ -73,6 +75,7 @@ export default function MyMap({
                 onClick={() => {
                   (mapRef.current! as Map).closePopup();
                   setPin(town.name);
+                  toggleStart(false);
                 }}
               >
                 {isSelectingStart
@@ -96,6 +99,7 @@ export default function MyMap({
                 onClick={() => {
                   (mapRef.current! as Map).closePopup();
                   setPin(town.name);
+                  toggleStart(false);
                 }}
               >
                 {isSelectingStart

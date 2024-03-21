@@ -64,6 +64,7 @@ export default function Explore() {
         starting={starting}
         ending={ending}
         isSelectingStart={isSelectingStart}
+        toggleStart={toggleStart}
       />
       <div className="absolute top-6 z-100000 ">
         <SearchBar
