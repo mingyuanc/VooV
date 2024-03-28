@@ -39,7 +39,7 @@ export default function ResultsPage({ src, dest }: ResultsPageProps) {
   };
 
   return (
-    <div className="min-h-fit">
+    <div className="min-h-fit flex flex-col items-center">
       <ResultsHeader
         src={src}
         dest={dest}
@@ -47,13 +47,15 @@ export default function ResultsPage({ src, dest }: ResultsPageProps) {
         activeTab={activeTab}
         onTabClick={onTabClick}
       />
-      <Results
-        src={src}
-        dest={dest}
-        dates={dates}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-      />
+      <div className="max-w-screen-lg w-full">
+        <Results
+          src={src}
+          dest={dest}
+          dates={dates}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
+      </div>
     </div>
   );
 }
