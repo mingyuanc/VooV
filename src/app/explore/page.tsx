@@ -18,7 +18,7 @@ export default function Explore() {
       ToastBuilder.error("Please select an ending point").send();
       return;
     }
-    router.push(`explore/results?starting=${starting}&ending=${ending}`);
+    router.push(`/results?starting=${starting}&ending=${ending}`);
   };
   const Map = useMemo(
     () =>
