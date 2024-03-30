@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <div className="bg-foreground min-h-screen flex flex-col items-center justify-center overflow-hidden">
       <AnimatePresence>
-        {shouldExit && (
+        {shouldExit ? (
           <motion.img
             src={"logo.png"}
             initial={{ x: "100%", opacity: 0 }}
@@ -39,7 +39,7 @@ export default function Home() {
               transition: { duration: 1, ease: "easeInOut" },
             }}
           />
-        )}
+        ) : null}
       </AnimatePresence>
     </div>
   );
