@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import ResultsPage from "@/features/results/components/ResultsPage";
 
 export default function Results() {
