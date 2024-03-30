@@ -14,23 +14,23 @@ function getAllDatesUntilEndOfMonth(): {
   date: string;
   ref: MutableRefObject<HTMLDivElement | null>;
 }[] {
-  const today = new Date();
-  const lastDayOfMonth = new Date(
-    today.getFullYear(),
-    today.getMonth() + 1,
-    0
-  ).getDate();
-  const dayAbbreviations = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  // const today = new Date();
+  // const lastDayOfMonth = new Date(
+  //   today.getFullYear(),
+  //   today.getMonth() + 1,
+  //   0
+  // ).getDate();
+  // const dayAbbreviations = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const datesList = [{ date: "Today", ref: useRef(null) }];
-  for (let i = 1; i <= lastDayOfMonth; i++) {
-    const date = new Date(today.getFullYear(), today.getMonth(), i);
-    datesList.push({
-      date: `${dayAbbreviations[date.getDay()]} ${date.getDate()}`,
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      ref: useRef(null),
-    });
-  }
+  // for (let i = 1; i <= lastDayOfMonth; i++) {
+  //   const date = new Date(today.getFullYear(), today.getMonth(), i);
+  //   datesList.push({
+  //     date: `${dayAbbreviations[date.getDay()]} ${date.getDate()}`,
+  //     // eslint-disable-next-line react-hooks/rules-of-hooks
+  //     ref: useRef(null),
+  //   });
+  // }
 
   return datesList;
 }
