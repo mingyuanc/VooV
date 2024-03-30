@@ -36,7 +36,7 @@ export default function ResultEntry({
         isAvail ? "hover:cursor-pointer" : "bg-gray-100 text-gray-500"
       }`}
     >
-      <div className="flex flex-col pr-14">
+      <div className="flex flex-col pr-10">
         <span className="text-lg font-semibold">{time}</span>
         <span className="text-md text-gray-500">30 min</span>
       </div>
@@ -49,12 +49,9 @@ export default function ResultEntry({
       </div>
       <div className="flex flex-col ml-auto mr-2">
         {isAvail ? (
-          `${seatsLeft} seats left`
+          `${seatsLeft} left!`
         ) : (
-          <div className="flex items-center">
-            Notify me!
-            <BellAlertIcon className="w-6 h-6 p-1" />
-          </div>
+          <BellAlertIcon className="w-8 h-8 p-1" />
         )}
       </div>
     </div>

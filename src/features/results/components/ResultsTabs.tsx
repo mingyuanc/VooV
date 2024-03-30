@@ -15,7 +15,7 @@ export default function ResultsTabs({
   onTabClick,
 }: ResultsTabsProps) {
   return (
-    <div>
+    <div className="min-h-fit">
       <Tabs
         activeTab={activeTab}
         onTabClick={onTabClick}

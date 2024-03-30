@@ -70,7 +70,7 @@ function ResultDay({ src, dest, date, index, intersectHook }: ResultDayProps) {
     "19:30",
   ];
   return (
-    <div id={"qn" + index} ref={ref} className="pb-8 pt-4 scroll-m-44">
+    <div id={"qn" + index} ref={ref} className="pb-8 pt-4">
       <h1 className="pl-4 font-bold text-3xl">{date}</h1>
       {timeArray.map((time) => (
         <ResultEntry
