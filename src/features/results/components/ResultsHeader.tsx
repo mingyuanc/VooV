@@ -1,11 +1,15 @@
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/navigation";
 import ResultsTabs from "./ResultsTabs";
+import { MutableRefObject } from "react";
 
 interface ResultsHeaderProps {
   src: string;
   dest: string;
-  dates: string[];
+  dates: {
+    date: string;
+    ref: MutableRefObject<HTMLDivElement | null>;
+  }[];
   activeTab: number;
   onTabClick: (e: Event, x: number) => void;
 }

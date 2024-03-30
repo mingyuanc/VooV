@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useState, useRef, MutableRefObject } from "react";
 import Results from "./Results";
 import ResultsHeader from "./ResultsHeader";
-import { useSwipeable, UP, DOWN, SwipeEventData } from "react-swipeable";
+import { useSwipeable, SwipeEventData } from "react-swipeable";
 
 interface ResultsPageProps {
   src: string;
   dest: string;
 }
 
-function getAllDatesUntilEndOfMonth() {
+function getAllDatesUntilEndOfMonth(): {
+  date: string;
+  ref: MutableRefObject<HTMLDivElement | null>;
+}[] {
   const today = new Date();
   const lastDayOfMonth = new Date(
     today.getFullYear(),
@@ -17,10 +20,14 @@ function getAllDatesUntilEndOfMonth() {
   ).getDate();
   const dayAbbreviations = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const datesList = ["Today"];
+  const datesList = [{ date: "Today", ref: useRef(null) }];
   for (let i = 1; i <= lastDayOfMonth; i++) {
     const date = new Date(today.getFullYear(), today.getMonth(), i);
-    datesList.push(`${dayAbbreviations[date.getDay()]} ${date.getDate()}`);
+    datesList.push({
+      date: `${dayAbbreviations[date.getDay()]} ${date.getDate()}`,
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      ref: useRef(null),
+    });
   }
 
   return datesList;
@@ -28,11 +35,11 @@ function getAllDatesUntilEndOfMonth() {
 
 export default function ResultsPage({ src, dest }: ResultsPageProps) {
   const [activeTab, setActiveTab] = useState(0);
-  const dates = getAllDatesUntilEndOfMonth();
+  const [dates, setDates] = useState(getAllDatesUntilEndOfMonth());
 
   const onTabClick = (_: Event | undefined, index: number) => {
     setTimeout(() => {
-      document.getElementById("qn" + index)?.scrollIntoView({
+      dates[index].ref.current?.scrollIntoView({
         block: "start",
         inline: "nearest",
       });
@@ -40,12 +47,12 @@ export default function ResultsPage({ src, dest }: ResultsPageProps) {
   };
 
   const handlers = useSwipeable({
-    onSwipedLeft: (eventData: SwipeEventData) => {
+    onSwipedLeft: (_: SwipeEventData) => {
       if (activeTab < dates.length - 1) {
         onTabClick(undefined, activeTab + 1);
       }
     },
-    onSwipedRight: (eventData: SwipeEventData) => {
+    onSwipedRight: (_: SwipeEventData) => {
       if (activeTab > 0) {
         onTabClick(undefined, activeTab - 1);
       }
@@ -69,7 +76,6 @@ export default function ResultsPage({ src, dest }: ResultsPageProps) {
           src={src}
           dest={dest}
           dates={dates}
-          activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
       </div>

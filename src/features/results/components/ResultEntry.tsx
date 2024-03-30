@@ -47,9 +47,9 @@ export default function ResultEntry({
 
         <span className="text-md text-gray-500">Bus #{busNumber}</span>
       </div>
-      <div className="flex flex-col ml-auto mr-2">
+      <div className="flex flex-col ml-auto pl-2 mr-2 ">
         {isAvail ? (
-          `${seatsLeft} left!`
+          <div className="text-center min-w-8">{seatsLeft}</div>
         ) : (
           <BellAlertIcon className="w-8 h-8 p-1" />
         )}
