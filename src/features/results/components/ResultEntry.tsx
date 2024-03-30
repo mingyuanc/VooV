@@ -51,10 +51,7 @@ export default function ResultEntry({
         {isAvail ? (
           `${seatsLeft} left!`
         ) : (
-          <div className="flex items-center">
-            Notify me!
-            <BellAlertIcon className="w-6 h-6 p-1" />
-          </div>
+          <BellAlertIcon className="w-8 h-8 p-1" />
         )}
       </div>
     </div>
