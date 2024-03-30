@@ -9,7 +9,7 @@ export default function Results() {
   const dest = searchParams.get("ending")!;
 
   return (
-    <div className="max-w-full max-h-full">
+    <div className="max-w-full">
       <ResultsPage src={src} dest={dest} />
     </div>
   );
