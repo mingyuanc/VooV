@@ -64,7 +64,7 @@ export default function ResultsPage({ src, dest }: ResultsPageProps) {
 
   return (
     <div className="max-h-screen flex flex-col items-center max-w-full ">
-      {/* <div>
+      <div>
         <ResultsHeader
           src={src}
           dest={dest}
@@ -80,7 +80,7 @@ export default function ResultsPage({ src, dest }: ResultsPageProps) {
           dates={dates}
           setActiveTab={setActiveTab}
         />
-      </div> */}
+      </div>
     </div>
   );
 }
