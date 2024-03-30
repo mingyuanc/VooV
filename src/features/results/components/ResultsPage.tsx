@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Results from "./Results";
 import ResultsHeader from "./ResultsHeader";
+import { useSwipeable, UP, DOWN, SwipeEventData } from "react-swipeable";
 
 interface ResultsPageProps {
   src: string;
@@ -29,7 +30,7 @@ export default function ResultsPage({ src, dest }: ResultsPageProps) {
   const [activeTab, setActiveTab] = useState(0);
   const dates = getAllDatesUntilEndOfMonth();
 
-  const onTabClick = (_: Event, index: number) => {
+  const onTabClick = (_: Event | undefined, index: number) => {
     setTimeout(() => {
       document.getElementById("qn" + index)?.scrollIntoView({
         block: "start",
@@ -38,8 +39,22 @@ export default function ResultsPage({ src, dest }: ResultsPageProps) {
     }, 0);
   };
 
+  const handlers = useSwipeable({
+    onSwipedLeft: (eventData: SwipeEventData) => {
+      if (activeTab < dates.length - 1) {
+        onTabClick(undefined, activeTab + 1);
+      }
+    },
+    onSwipedRight: (eventData: SwipeEventData) => {
+      if (activeTab > 0) {
+        onTabClick(undefined, activeTab - 1);
+      }
+    },
+    trackMouse: true,
+  });
+
   return (
-    <div className="min-h-fit flex flex-col items-center">
+    <div className="min-h-fit flex flex-col items-center max-w-full ">
       <ResultsHeader
         src={src}
         dest={dest}
@@ -47,7 +62,7 @@ export default function ResultsPage({ src, dest }: ResultsPageProps) {
         activeTab={activeTab}
         onTabClick={onTabClick}
       />
-      <div className="max-w-screen-lg w-full">
+      <div {...handlers} className="max-w-screen-lg w-full">
         <Results
           src={src}
           dest={dest}
