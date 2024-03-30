@@ -20,7 +20,7 @@ export default function ResultsHeader({
   const router = useRouter();
 
   return (
-    <div className="sticky top-0 bg-white w-screen max-w-full overflow-x-hidden">
+    <div className="bg-white w-screen max-w-full min-h-fit overflow-x-hidden">
       <div className="max-h-20 flex justify-center items-center pt-20 pb-6 z-1 ">
         <ChevronLeftIcon
           className="w-10 h-10 left-4 absolute bg-white rounded-full p-1 m-2 hover:cursor-pointer"

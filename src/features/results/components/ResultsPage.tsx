@@ -54,15 +54,17 @@ export default function ResultsPage({ src, dest }: ResultsPageProps) {
   });
 
   return (
-    <div className="min-h-fit flex flex-col items-center max-w-full ">
-      <ResultsHeader
-        src={src}
-        dest={dest}
-        dates={dates}
-        activeTab={activeTab}
-        onTabClick={onTabClick}
-      />
-      <div {...handlers} className="max-w-screen-lg w-full">
+    <div className="max-h-screen flex flex-col items-center max-w-full ">
+      <div>
+        <ResultsHeader
+          src={src}
+          dest={dest}
+          dates={dates}
+          activeTab={activeTab}
+          onTabClick={onTabClick}
+        />
+      </div>
+      <div {...handlers} className="max-w-screen-lg w-full overflow-y-scroll">
         <Results
           src={src}
           dest={dest}
