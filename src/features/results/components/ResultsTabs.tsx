@@ -2,9 +2,13 @@ import { Tabs, Tab } from "react-tabs-scrollable";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import "react-tabs-scrollable/dist/rts.css";
 import "./mui-tabs.css";
+import { MutableRefObject } from "react";
 
 interface ResultsTabsProps {
-  dates: string[];
+  dates: {
+    date: string;
+    ref: MutableRefObject<HTMLDivElement | null>;
+  }[];
   activeTab: number;
   onTabClick: (_: Event, index: number) => void;
 }
@@ -24,9 +28,9 @@ export default function ResultsTabs({
         mode="scrollSelectedToCenterFromView"
       >
         {dates.map((item, index) => (
-          <Tab key={item}>
+          <Tab key={item.date}>
             <span className={`${index === activeTab ? "font-bold" : ""}`}>
-              {item}
+              {item.date}
             </span>
           </Tab>
         ))}

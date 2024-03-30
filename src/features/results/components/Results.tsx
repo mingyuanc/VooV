@@ -1,13 +1,14 @@
-import { Button } from "@/components/ui/button";
-import { MutableRefObject, use, useEffect, useState } from "react";
-import { InView, useInView } from "react-intersection-observer";
+import { MutableRefObject, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 import ResultEntry from "./ResultEntry";
 
 interface resultsProps {
   src: string;
   dest: string;
-  dates: string[];
-  activeTab: number;
+  dates: {
+    date: string;
+    ref: MutableRefObject<HTMLDivElement | null>;
+  }[];
   setActiveTab: (x: number) => void;
 }
 
@@ -15,7 +16,6 @@ export default function Results({
   src,
   dest,
   dates,
-  activeTab,
   setActiveTab,
 }: resultsProps) {
   const IntersectHook = (index: number, inView: boolean): void => {
@@ -30,7 +30,7 @@ export default function Results({
     <div>
       {dates.map((date, index) => (
         <ResultDay
-          key={date}
+          key={date.date}
           src={src}
           dest={dest}
           date={date}
@@ -45,7 +45,10 @@ export default function Results({
 interface ResultDayProps {
   src: string;
   dest: string;
-  date: string;
+  date: {
+    date: string;
+    ref: MutableRefObject<HTMLDivElement | null>;
+  };
   index: number;
   intersectHook: (index: number, inView: boolean) => void;
 }
@@ -70,16 +73,18 @@ function ResultDay({ src, dest, date, index, intersectHook }: ResultDayProps) {
     "19:30",
   ];
   return (
-    <div id={"qn" + index} ref={ref} className="pb-8 pt-4">
-      <h1 className="pl-4 font-bold text-3xl">{date}</h1>
-      {timeArray.map((time) => (
-        <ResultEntry
-          key={time}
-          time={time}
-          src={time > "11:00" ? dest : src}
-          dest={time > "11:00" ? src : dest}
-        />
-      ))}
+    <div ref={date.ref} className="pb-8 pt-4">
+      <div ref={ref}>
+        <h1 className="pl-4 font-bold text-3xl">{date.date}</h1>
+        {timeArray.map((time) => (
+          <ResultEntry
+            key={time}
+            time={time}
+            src={time > "11:00" ? dest : src}
+            dest={time > "11:00" ? src : dest}
+          />
+        ))}
+      </div>
     </div>
   );
 }
