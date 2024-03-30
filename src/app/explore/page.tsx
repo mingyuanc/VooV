@@ -54,7 +54,7 @@ export default function Explore() {
         setStarting={(x) => setStarting(x)}
         setEnding={(x) => setEnding(x)}
       />
-      <div className="absolute top-14 z-100000 ">
+      <div className="absolute top-6 z-100000 ">
         <SearchBar
           starting={starting}
           ending={ending}
