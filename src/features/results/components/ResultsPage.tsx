@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useRef, MutableRefObject } from "react";
 import Results from "./Results";
 import ResultsHeader from "./ResultsHeader";
