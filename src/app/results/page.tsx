@@ -9,7 +9,13 @@ export default function Results() {
   const dest = searchParams.get("ending")!;
 
   return (
-    <div className="max-w-full">
+    <div
+      className="max-w-full max-h-screen h-screen"
+      style={{
+        height: "-webkit-fill-available",
+        maxHeight: "-webkit-fill-available",
+      }}
+    >
       <ResultsPage src={src} dest={dest} />
     </div>
   );
