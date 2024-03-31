@@ -70,7 +70,7 @@ export default function ResultsPage({ src, dest }: ResultsPageProps) {
         maxHeight: "-webkit-fill-available",
       }}
     >
-      <div className="h-fit">
+      <div className="h-fit min-h-fit">
         <ResultsHeader
           src={src}
           dest={dest}
