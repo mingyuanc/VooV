@@ -23,34 +23,24 @@ const greenIcon = new L.Icon({
 });
 
 interface mapProps {
-  setPin: (x: string) => void;
-  isSelectingStart: boolean;
+  setStarting: (x: string) => void;
+  setEnding: (x: string) => void;
   starting: string;
   ending: string;
-  toggleStart: (x: boolean) => void;
 }
 export default function MyMap({
-  setPin,
-  isSelectingStart,
+  setStarting,
+  setEnding,
   starting,
   ending,
-  toggleStart,
 }: mapProps) {
   const mapRef = useRef(null);
   const position: [number, number] = [1.3521, 103.8198];
 
   const zoom = 13;
 
-  const townD =
-    townData.find((x) => starting === x.name) ||
-    townData.find((x) => ending === x.name)
-      ? []
-      : townData;
-  const cityD =
-    cityData.find((x) => starting === x.name) ||
-    cityData.find((x) => ending === x.name)
-      ? []
-      : cityData;
+  const townD = townData.find((x) => starting === x.name) ? [] : townData;
+  const cityD = cityData.find((x) => ending === x.name) ? [] : cityData;
 
   return (
     <div className="relative min-h-screen min-w-full z-0">
@@ -74,13 +64,10 @@ export default function MyMap({
                 className="w-full border-none hover:bg-white"
                 onClick={() => {
                   (mapRef.current! as Map).closePopup();
-                  setPin(town.name);
-                  toggleStart(false);
+                  setStarting(town.name);
                 }}
               >
-                {isSelectingStart
-                  ? `Set ${town.name} as Pickup Point?`
-                  : `Set ${town.name} as Destination?`}
+                {`Set ${town.name} as Pickup Point?`}
               </Button>
             </Popup>
           </Marker>
@@ -98,13 +85,10 @@ export default function MyMap({
                 className="w-full border-none hover:bg-white"
                 onClick={() => {
                   (mapRef.current! as Map).closePopup();
-                  setPin(town.name);
-                  toggleStart(false);
+                  setEnding(town.name);
                 }}
               >
-                {isSelectingStart
-                  ? `Set ${town.name} as Pickup Point?`
-                  : `Set ${town.name} as Destination?`}
+                {`Set ${town.name} as Destination?`}
               </Button>
             </Popup>
           </Marker>

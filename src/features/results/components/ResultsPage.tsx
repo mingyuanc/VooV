@@ -64,13 +64,13 @@ export default function ResultsPage({ src, dest }: ResultsPageProps) {
 
   return (
     <div
-      className="max-h-screen h-full flex flex-col items-center max-w-full"
+      className="max-h-full h-full flex flex-col items-center max-w-full"
       style={{
         height: "-webkit-fill-available",
         maxHeight: "-webkit-fill-available",
       }}
     >
-      <div>
+      <div className="h-fit">
         <ResultsHeader
           src={src}
           dest={dest}

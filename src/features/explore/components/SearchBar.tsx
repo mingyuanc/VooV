@@ -8,7 +8,6 @@ import {
 interface searchProps {
   starting: string;
   ending: string;
-  setIsSelectingStart: (x: boolean) => void;
   searchFunction: () => void;
   setStarting: (x: string) => void;
   setEnding: (x: string) => void;
@@ -18,7 +17,6 @@ export default function SearchBar({
   starting,
   ending,
   searchFunction,
-  setIsSelectingStart,
   setStarting,
   setEnding,
 }: searchProps) {
@@ -31,7 +29,6 @@ export default function SearchBar({
             className={`bg-transparent flex items-center outline-none pl-2 w-[140px] md:w-39 cursor-pointer ${
               starting === "" ? "text-gray-600" : starting
             }`}
-            onClick={() => setIsSelectingStart(true)}
           >
             {starting === "" ? "Pick up at?" : starting}
           </div>
@@ -41,7 +38,6 @@ export default function SearchBar({
             }`}
             onClick={() => {
               setStarting("");
-              setIsSelectingStart(true);
             }}
           />
         </div>
@@ -54,7 +50,6 @@ export default function SearchBar({
             className={`bg-transparent flex items-center outline-none pl-2 w-[140px] md:w-39 cursor-pointer ${
               ending === "" ? "text-gray-600" : ending
             }`}
-            onClick={() => setIsSelectingStart(false)}
           >
             {ending === "" ? "Drop off at?" : ending}
           </div>
@@ -64,7 +59,6 @@ export default function SearchBar({
             }`}
             onClick={() => {
               setEnding("");
-              setIsSelectingStart(false);
             }}
           />
         </div>
