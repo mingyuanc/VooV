@@ -10,11 +10,11 @@ export default function Results() {
 
   return (
     <div
-      className="max-w-full max-h-screen h-screen overflow-hidden"
-      // style={{
-      //   height: "-webkit-fill-available",
-      //   maxHeight: "-webkit-fill-available",
-      // }}
+      className="max-w-full max-h-screen h-screen"
+      style={{
+        // height: "-webkit-fill-available",
+        maxHeight: "-webkit-fill-available",
+      }}
     >
       <ResultsPage src={src} dest={dest} />
     </div>
